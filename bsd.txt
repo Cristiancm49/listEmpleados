@@ -1,0 +1,41 @@
+create database dbempleado;
+
+use dbempleado;
+
+create table departamento(
+idDepartaemtno int primary key identity,
+nombre varchar(50),
+fechaCreacion datetime default getdate()
+);
+
+create table empleado(
+idEmpleado int primary key identity,
+nombreCompleto varchar(50),
+idDepartaemtno int references departamento(idDepartaemtno),
+sueldo int,
+fechaContrato datetime,
+fechaCreacion datetime default getdate()
+);
+
+INSERT INTO departamento (nombre) VALUES ('Recursos Humanos');
+INSERT INTO departamento (nombre) VALUES ('Finanzas');
+INSERT INTO departamento (nombre) VALUES ('Tecnología');
+INSERT INTO departamento (nombre) VALUES ('Marketing');
+INSERT INTO departamento (nombre) VALUES ('Producción');
+
+
+INSERT INTO empleado (nombreCompleto, idDepartaemtno, sueldo, fechaContrato) 
+VALUES ('Juan Pérez', 1, 25000, '2023-10-01');
+
+INSERT INTO empleado (nombreCompleto, idDepartaemtno, sueldo, fechaContrato) 
+VALUES ('María López', 2, 30000, '2022-05-15');
+
+INSERT INTO empleado (nombreCompleto, idDepartaemtno, sueldo, fechaContrato) 
+VALUES ('Carlos García', 3, 35000, '2021-08-20');
+
+INSERT INTO empleado (nombreCompleto, idDepartaemtno, sueldo, fechaContrato) 
+VALUES ('Ana Torres', 4, 27000, '2023-01-10');
+
+INSERT INTO empleado (nombreCompleto, idDepartaemtno, sueldo, fechaContrato) 
+VALUES ('Luis Mendoza', 5, 32000, '2020-11-05');
+
