@@ -5,6 +5,8 @@ namespace backend.Models
 {
     public partial class Departamento
     {
+        internal object idDepartamentoNavigation;
+
         public Departamento()
         {
             Empleados = new HashSet<Empleado>();

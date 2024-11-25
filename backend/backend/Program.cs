@@ -1,3 +1,6 @@
+using backend.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Server=localhost\\SQLEXPRESS;Database=dbempleado;Trusted_Connection=True;TrustServerCertificate=True;
+builder.Services.AddDbContext<dbempleadoContext>(Options => {
+    Options.UseSqlServer(builder.Configuration.GetConnectionString("cadenaSQL"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
